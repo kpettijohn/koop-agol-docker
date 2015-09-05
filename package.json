@@ -1,0 +1,27 @@
+{
+  "name": "koop-agol-docker",
+  "description": "A docker image using koop agol with postgis",
+  "version": "1.0.0",
+  "author": "Kevin Pettijohn",
+  "dependencies": {
+    "config": "^1.14.0",
+    "cors": "^2.5.3",
+    "express": "^4.12.3",
+    "js-yaml": "^3.3.1",
+    "koop": "https://github.com/koopjs/koop.git#master",
+    "koop-agol": "https://github.com/koopjs/koop-agol.git#master",
+    "koop-pgcache": "https://github.com/koopjs/koop-pgcache.git#master"
+  },
+  "keywords": [
+    "docker",
+    "koop",
+    "postgis",
+    "agol"
+  ],
+  "license": "Apache-2.0",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

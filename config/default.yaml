@@ -1,0 +1,30 @@
+# Express server
+server:
+  port: 8000
+
+data_dir: /var/lib/koop
+sockets: 10
+#logfile: /tmp/koop.log
+
+# Cache
+db: 
+  conn: postgres://postgres@postgis/koopdev
+  pg: postgres://postgres@postgis/koopdev
+
+redis:
+  prefix: agol-worker
+  port: 6379
+  host: redis
+
+agol:
+  request_workers:
+    redis:
+      prefix: agol-worker
+      port: 6379
+      host: redis
+
+export_workers:
+  redis:
+    prefix: export-worker
+    port: 6379
+    host: redis

@@ -1,0 +1,44 @@
+postgis:
+  image: kpettijohn/postgis
+  ports:
+    - "5432:5432"
+
+redis:
+  image: redis:2.8.21
+  ports:
+    - "6379:6379"
+
+koop:
+  build: .
+  command: koop postgis
+  links:
+    - redis
+    - postgis
+  environment:
+    - KOOP_DATA_DIR=/var/lib/koop
+    - KOOP_DB_CONN=postgres://postgres@postgis/koopdev
+    - KOOP_DATABASE=koopdev
+  ports:
+    - "8000:8000"
+
+agol:
+  image: koopagoldocker_koop
+  command: node agol_worker.js
+  links:
+    - redis
+    - postgis
+  environment:
+    - KOOP_DATA_DIR=/var/lib/koop
+    - KOOP_DB_CONN=postgres://postgres@postgis/koopdev
+    - KOOP_DATABASE=koopdev
+
+export:
+  image: koopagoldocker_koop
+  command: node export_worker.js
+  links:
+    - redis
+    - postgis
+  environment:
+    - KOOP_DATA_DIR=/var/lib/koop
+    - KOOP_DB_CONN=postgres://postgres@postgis/koopdev
+    - KOOP_DATABASE=koopdev

@@ -1,0 +1,10 @@
+{
+  "data_dir": "KOOP_DATA_DIR",
+  "logfile": "KOOP_LOG_FILE",
+  "s3": {
+    "bucket": "KOOP_S3_BUCKET"
+  },
+  "db": {
+    "conn": "KOOP_DB_CONN"
+  }
+}
