@@ -9,10 +9,9 @@ sockets: 10
 # Cache
 db: 
   conn: postgres://postgres@postgis/koopdev
-  pg: postgres://postgres@postgis/koopdev
 
 redis:
-  prefix: agol-worker
+  prefix: default
   port: 6379
   host: redis
 
