@@ -31,6 +31,8 @@ agol:
     - KOOP_DATA_DIR=/var/lib/koop
     - KOOP_DB_CONN=postgres://postgres@postgis/koopdev
     - KOOP_DATABASE=koopdev
+  volumes_from:
+    - data
 
 export:
   image: koopagoldocker_koop
@@ -42,3 +44,31 @@ export:
     - KOOP_DATA_DIR=/var/lib/koop
     - KOOP_DB_CONN=postgres://postgres@postgis/koopdev
     - KOOP_DATABASE=koopdev
+  volumes_from:
+    - data
+
+test:
+  image: koopagoldocker_koop
+  command: ./node_modules/mocha/bin/mocha --reporter mocha-jenkins-reporter
+  links:
+    - redis
+    - postgis
+    - koop
+  environment:
+    - JUNIT_REPORT_PATH=/var/lib/koop
+    - JUNIT_REPORT_STACK=1
+    - TEST_KOOP_HOST=koop
+    - NOCK_RECORD=1
+  volumes_from:
+    - data
+
+data:
+  image: tianon/true
+  volumes:
+    - /var/lib/koop
+
+backup:
+  image: busybox
+  command: sh -c 'tar -cvf /koop_data.tar /var/lib/koop'
+  volumes_from:
+    - data
