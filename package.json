@@ -12,6 +12,12 @@
     "koop-agol": "https://github.com/koopjs/koop-agol.git#master",
     "koop-pgcache": "https://github.com/koopjs/koop-pgcache.git#master"
   },
+  "devDependencies": {
+    "nock": "2.10.0",
+    "chai": "3.2.0",
+    "mocha": "2.3.1",
+    "mocha-jenkins-reporter": "0.1.9"
+  },
   "keywords": [
     "docker",
     "koop",
@@ -22,6 +28,6 @@
   "main": "server.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha -R spec test/index.js"
   }
 }

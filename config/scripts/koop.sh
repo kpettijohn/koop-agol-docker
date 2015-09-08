@@ -4,14 +4,15 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )" 
 cd ../../
 
+DB_WAIT_TIME=${DB_WAIT_TIME:-8}
+
 docker_compose_create () {
-  s=5
   docker-compose build
   docker-compose up -d redis
   docker-compose up -d postgis
   # Let the master come online
-  echo "Sleeping for $s seconds while PostgreSQL starts..."
-  sleep $s
+  echo "Sleeping for $DB_WAIT_TIME seconds while PostgreSQL starts..."
+  sleep $DB_WAIT_TIME
   docker-compose up -d --no-deps koop
   sleep 3
   docker-compose up -d --no-deps export agol

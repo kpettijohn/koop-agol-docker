@@ -27,6 +27,20 @@ Each time you run `./koop.sh re-create` docker-compose will do the following:
 
 Configuration is handled by [node-config](https://github.com/lorenwest/node-config) which reads the default settings from `config/default.yaml`. Individual values can be overridden using environment variables configured in `config/custom-environment-variables.json`. You can set environment variables for each container within the `docker-compose.yml` file.
 
+## Tests
+
+Tests are using [Mocha](https://github.com/mochajs/mocha) and [Nock](https://github.com/pgte/nock). 
+
+Currently all tests make real HTTP calls to a provided Koop host. Each test will record the HTTP call and save it as a fixture in `test/fixtures`. All following test runs will use the local fixtures. You can force a fresh set of fixtures by passing `NOCK_RECORD=1`
+
+```
+TEST_KOOP_HOST=`docker-machine ip dev` npm test
+```
+
+```
+NOCK_RECORD=1 TEST_KOOP_HOST=`docker-machine ip dev` npm test
+```
+
 ## Contributing
 
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/Esri/contributing).
