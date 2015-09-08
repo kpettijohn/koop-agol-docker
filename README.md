@@ -31,14 +31,21 @@ Configuration is handled by [node-config](https://github.com/lorenwest/node-conf
 
 Tests are using [Mocha](https://github.com/mochajs/mocha) and [Nock](https://github.com/pgte/nock). 
 
-Currently all tests make real HTTP calls to a provided Koop host. Each test will record the HTTP call and save it as a fixture in `test/fixtures`. All following test runs will use the local fixtures. You can force a fresh set of fixtures by passing `NOCK_RECORD=1`
+Currently all tests make real HTTP calls to a provided Koop host. Each test will record the HTTP call and save it as a fixture in `test/fixtures`. All following test runs will use the local fixtures. You can force a fresh set of fixtures by passing `NOCK_RECORD=1` when executing tests.
 
+Set the host ip/hostname for Koop
 ```
 TEST_KOOP_HOST=`docker-machine ip dev` npm test
 ```
 
+Force a refresh of test fixtures
 ```
 NOCK_RECORD=1 TEST_KOOP_HOST=`docker-machine ip dev` npm test
+```
+
+Generate JUnit test report
+```
+JUNIT_REPORT_PATH=report.xml JUNIT_REPORT_STACK=1 ./node_modules/mocha/bin/mocha --reporter mocha-jenkins-reporter
 ```
 
 ## Contributing
