@@ -1,2 +1,4 @@
-node_modules/
+node_modules
+koop_data
+data
 *.swp

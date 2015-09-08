@@ -1,4 +1,6 @@
-data/
-node_modules/
-config/scripts/koop.sh
+data
+koop_data
+node_modules
+test/fixtures/*
+config/scrits/koop.sh
 docker-compose.yml
