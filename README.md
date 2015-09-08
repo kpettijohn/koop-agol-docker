@@ -11,10 +11,10 @@ The quickest way to get started is to install the [Docker Toolbox](https://www.d
 Once you have docker setup you can run the following script to create a Koop server, Koop export worker, Koop agol worker, postgis, and redis containers.
 
 ```
-./config/scripts/koop.sh re-create
+./config/scripts/koop.sh recreate
 ```
 
-Each time you run `./koop.sh re-create` docker-compose will do the following:
+Each time you run `./koop.sh recreate` docker-compose will do the following:
 
 * Stop and force remove any existing containers
 * Build the Koop image from the repositories Dockerfile
